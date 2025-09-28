@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- スマホ対応の必須メタ -->
+  <title>~CCHP~カーパーキング 課金車配布</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>CCHP</h1>
+
+    <!-- ハンバーガー（スマホ用） -->
+    <button id="hamburger" class="hamburger" aria-label="メニュー" aria-expanded="false" aria-controls="site-nav">
+      &#9776;
+    </button>
+
+    <nav id="site-nav" class="site-nav">
+      <a href="https://line.me/ti/g2/L74JbWAmOpOAPxqiNA-IRYzFCuzwLlKtpHvjFg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">メインオプ(雑談禁止)</a>
+      <a href="https://rasutoma.github.io/CCHP/">弊社について</a>
+      <a href="https://discord.gg/YFCBgTpkY2">Discordへ参加</a>
+      <a href="##"></a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>ようこそCCHP公式ページへ</h2>
+    <p>こちらから各サービスにアクセスできます</p>
+  </section>
+
+  <div class="links">
+    <div class="card">
+      <img src="https://raw.githubusercontent.com/rasutoma/sonmasayosi/refs/heads/main/409814.jpg" alt="リンク1">
+      <a href="https://line.me/ti/g2/L74JbWAmOpOAPxqiNA-IRYzFCuzwLlKtpHvjFg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">メインオプ</a>
+    </div>
+    <div class="card">
+      <img src="https://raw.githubusercontent.com/rasutoma/sonmasayosi/refs/heads/main/409813.jpg" alt="リンク2">
+      <a href="https://line.me/ti/g2/1-Il_GH7NNjPF8e795GSBS0ZocGCYMzOw0_-iw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">依頼コーナー</a>
+    </div>
+   <div class="card">
+      <img src="https://raw.githubusercontent.com/rasutoma/sonmasayosi/refs/heads/main/409812.jpg" alt="リンク3">
+      <a href="https://line.me/ti/g2/oarM_gzHZzikzJg9ZbbxEppnqGBTbFepq0b5CA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">雑談コーナー</a
+    </div>
+  </div>
+
+  <!-- スマホ時に表示される固定ボトムナビ -->
+  <nav id="bottomNav" class="bottom-nav" aria-hidden="true">
+    <a href="https://line.me/ti/g2/L74JbWAmOpOAPxqiNA-IRYzFCuzwLlKtpHvjFg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">メイン</a>
+    <a href="https://line.me/ti/g2/1-Il_GH7NNjPF8e795GSBS0ZocGCYMzOw0_-iw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">依頼</a>
+    <a href="https://line.me/ti/g2/jmz7poivFzE-e0YjQbi_AL428qHFi66BjCkkFg?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">販売</a>
+    <a href="https://line.me/ti/g2/oarM_gzHZzikzJg9ZbbxEppnqGBTbFepq0b5CA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">雑談</a>
+  </nav>
+
+  <footer>
+    <p>© 2025 CPM.</p>
+  </footer>
+
+  <script>
+    // スマホ検出とUI切替ロジック
+    (function () {
+      const body = document.body;
+      const hamburger = document.getElementById('hamburger');
+      const siteNav = document.getElementById('site-nav');
+      const bottomNav = document.getElementById('bottomNav');
+
+      // matchMedia でレスポンシブ判定（600px 以下をスマホとみなす）
+      const mq = window.matchMedia('(max-width: 600px)');
+
+      function applyMobileMode(isMobile) {
+        if (isMobile) {
+          body.classList.add('is-mobile');
+          hamburger.style.display = 'inline-block';
+          bottomNav.setAttribute('aria-hidden', 'false');
+        } else {
+          body.classList.remove('is-mobile');
+          hamburger.style.display = 'none';
+          bottomNav.setAttribute('aria-hidden', 'true');
+          // ナビを閉じておく
+          siteNav.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      // 初期適用
+      applyMobileMode(mq.matches);
+
+      // 画面幅変更時に再判定
+      mq.addEventListener ? mq.addEventListener('change', (e) => applyMobileMode(e.matches)) : mq.addListener((e) => applyMobileMode(e.matches));
+
+      // ハンバーガーでナビ開閉
+      hamburger.addEventListener('click', function () {
+        const isOpen = siteNav.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // ナビ内のリンクを押したら閉じる（モバイル時）
+      siteNav.addEventListener('click', function (e) {
+        if (body.classList.contains('is-mobile') && e.target.tagName === 'A') {
+          siteNav.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // スクロールやタッチでの簡単なUX改善（optional）
+      // スクロールでボトムナビを自動で隠す/表示するなどの拡張が可能
+    })();
+  </script>
+</body>
+</html>

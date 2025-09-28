@@ -1,0 +1,263 @@
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+}
+
+header {
+  background: #0a3d62;
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+/* 通常ナビ */
+.site-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* ハンバーガーボタン（デフォルトは非表示、モバイルで表示） */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+}
+
+/* モバイル状態でのヘッダーナビの変化は .is-mobile で制御 */
+body.is-mobile .site-nav {
+  /* モバイルでは画面全体のオーバーレイメニューにする */
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 75%;
+  max-width: 320px;
+  background: linear-gradient(180deg, #0a3d62, #063047);
+  transform: translateX(110%);
+  transition: transform 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px 20px 20px;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+/* 開いたとき */
+body.is-mobile .site-nav.open {
+  transform: translateX(0);
+}
+
+/* モバイル用のリンクスタイル */
+body.is-mobile .site-nav a {
+  color: #fff;
+  margin: 12px 0;
+  font-size: 18px;
+}
+
+/* ヒーローやカードは既存スタイルを活かす */
+.hero {
+  background: url("https://raw.githubusercontent.com/rasutoma/sonmasayosi/refs/heads/main/409815.jpg") center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h2 {
+  font-size: 40px;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.hero p {
+  font-size: 18px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card a {
+  display: block;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #0a3d62;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card a:hover {
+  color: #1e90ff;
+}
+
+footer {
+  background: #0a3d62;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+  font-size: 14px;
+}
+
+/* ボトム固定ナビ（モバイル時に表示） */
+.bottom-nav {
+  display: none; /* デスクトップでは非表示 */
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,61,98,0.96);
+  color: white;
+  border-radius: 40px;
+  padding: 8px 10px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  z-index: 998;
+  gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 10px;
+  display: inline-block;
+}
+
+/* スマホ対応（既存のレスポンシブ） */
+@media (max-width: 600px) {
+  header {
+    flex-direction: row;
+    padding: 12px 14px;
+    text-align: left;
+  }
+
+  nav {
+    margin-top: 0;
+  }
+
+  .site-nav a {
+    margin-left: 0;
+    margin-right: 12px;
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 60px 10px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .links {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 0 8px;
+  }
+
+  .card img {
+    height: 120px;
+  }
+
+  .card a {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  footer {
+    padding: 18px 8px;
+    margin-top: 30px;
+    font-size: 13px;
+  }
+
+  /* ハンバーガー表示 */
+  .hamburger {
+    display: inline-block;
+  }
+
+  /* ボトムナビ表示（モバイル判定と合わせる） */
+  body.is-mobile .bottom-nav {
+    display: flex;
+  }
+}
+
+/* 追加のモバイル調整（既存の2つめの media query と統合） */
+@media (max-width: 600px) {
+  .hero {
+    padding: 40px 4px;
+    border-radius: 10px;
+    background-position: top center;
+    background-size: cover;
+    margin: 10px auto;
+    width: 90vw;
+    min-height: 160px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .links {
+    display: flex;
+    overflow-x: auto;
+    gap: 14px;
+    padding: 0 4px;
+    margin: 20px 0;
+    max-width: 100vw;
+  }
+
+  .card {
+    min-width: 220px;
+    flex: 0 0 auto;
+    margin-right: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+}
